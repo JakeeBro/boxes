@@ -1,9 +1,9 @@
-# Commit Changes on Branch
+# Create a Backup of Changes on Branch (assumes changes are on main already... edit to make it deploy from branch and merge into main)
 git add .
 git commit -m "Pre Deploy"
 git push
 
-# Build
+# Build (Ensures you are on main first)
 git checkout main
 ng build
 
