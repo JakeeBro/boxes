@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Boxes</h2>
+
+  <!-- Create New Box -->
+  <div class="create-form">
+    <input [(ngModel)]="newBox.label" placeholder="Label" />
+    <input [(ngModel)]="newBox.color" placeholder="Color" />
+    <button (click)="create()">Create</button>
+  </div>
+
+  <!-- List of Boxes -->
+  <div class="boxes-list">
+    @for (box of boxes; track box) {
+      <div class="box-card">
+        <div class="preview" [style.background]="box.color"></div>
+        <div class="meta">
+          <div class="box-info">
+            <strong>{{ box.label }}</strong>
+            <span>ID: {{ box.id }}</span>
+          </div>
+          <div class="actions">
+            <button (click)="startEdit(box)">Edit</button>
+            <button (click)="deleteBox(box.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Edit box -->
+  @if (editBox) {
+    <div class="edit-form">
+      <h3>Edit Box</h3>
+      <input [(ngModel)]="editBox.label" placeholder="Label" />
+      <input [(ngModel)]="editBox.color" type="color" />
+      <button (click)="saveEdit()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  }
+</div>
